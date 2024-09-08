@@ -21,9 +21,11 @@ pip freeze
 
 3) Módulos
 
-<p>python manage.py startapp main</p>
-<p>python manage.py startapp userauths</p>
-<p>python manage.py startapp api</p>
+<pre>
+    python manage.py startapp main 
+    python manage.py startapp userauths
+    python manage.py startapp api
+</pre>
 
 4) Criar superusuário
 
