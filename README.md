@@ -21,6 +21,17 @@ pip freeze
 
 3) Módulos
 
-python manage.py startapp main
-python manage.py startapp userauths
-python manage.py startapp api
+<p>python manage.py startapp main</p>
+<p>python manage.py startapp userauths</p>
+<p>python manage.py startapp api</p>
+
+4) Criar superusuário
+
+python manage.py createsuperuser
+
+5) Configurar Static, Media e Template Files
+
+<pre>
+    import os
+</pre>
+

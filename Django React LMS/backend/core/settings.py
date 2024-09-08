@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 
+import os
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -31,6 +33,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -125,3 +129,14 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configurate Jazzmin
+JAZZMIN_SETTINGS = {
+    "site_title": "Library Admin",
+    "site_header": "Desphix LMS",
+    "site_brand": "Desphix LMS",
+    #"site_logo": "path-to-logo",
+    "welcome_sign": "Bem vindo ao Desphix LMS",
+    "copyright": "Virtucom",
+    "show_ui_builder": True,
+}
