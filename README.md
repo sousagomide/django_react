@@ -35,5 +35,28 @@ python manage.py createsuperuser
 
 <pre>
     import os
+
+    TEMPLATES = [
+        {
+            'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        },
+    ]
+
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+    STATIC_ROOT = BASE_DIR / 'templates'
+    MEDIA_URL = '/media/' #127.0.0.1/media/avatar.jpg
+    MEDIA_ROOT = BASE_DIR / 'media'
+</pre>
+
+6) Criar as pastas: <pre>templates, media e static</pre>
+
+7) Em urls.py no core
+
+<pre>
+    from django.conf import settings
+    from django.conf.urls.static import static
+
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 </pre>
 
