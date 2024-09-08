@@ -34,7 +34,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'jazzmin',
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -130,7 +129,7 @@ STATIC_ROOT = BASE_DIR / 'templates'
 MEDIA_URL = '/media/' #127.0.0.1/media/avatar.jpg
 MEDIA_ROOT = BASE_DIR / 'media'
 
-
+AUTH_USER_MODEL = 'userauths.User'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
