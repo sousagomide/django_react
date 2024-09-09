@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from django.core.mail import EmailMultiAlternatives
+from django.core.mail import EmailMultiAlternatives, EmailMessage
+from django.core.mail import send_mail
+from core.settings import EMAIL_HOST_USER
 from django.template.loader import render_to_string
 from django.conf import settings
 from api import serializer as api_serializer
@@ -48,13 +50,16 @@ class PasswordResetEmailVerifyAPIView(generics.RetrieveAPIView):
             html_body = render_to_string('email/password_reset.html', context)
             msg = EmailMultiAlternatives(
                 subject=subject,
-                from_email=settings.FROM_EMAIL,
+                from_email=EMAIL_HOST_USER,
                 to=[user.email],
                 body=text_body
             )
             msg.attach_alternative(html_body, 'text/html')
             msg.send()
             # print('link ======', link)
+            
+
+
         return user
 
 class PasswordChangeAPIView(generics.CreateAPIView):
