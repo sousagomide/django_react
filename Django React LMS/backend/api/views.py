@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.conf import settings
 from api import serializer as api_serializer
 from userauths.models import User, Profile
 from rest_framework import generics, status
@@ -35,6 +38,22 @@ class PasswordResetEmailVerifyAPIView(generics.RetrieveAPIView):
             user.opt = generate_random_opt()
             user.save()
             link = f'http://localhost:5173/create-new-password/?opt={user.opt}&uuidb64={uuidb64}&refresh_token={refresh_token}'
+            # Send e-mail
+            context = {
+                'link': link,
+                'username': user.username
+            }
+            subject = 'Password Rest Email'
+            text_body = render_to_string('email/password_reset.txt', context)
+            html_body = render_to_string('email/password_reset.html', context)
+            msg = EmailMultiAlternatives(
+                subject=subject,
+                from_email=settings.FROM_EMAIL,
+                to=[user.email],
+                body=text_body
+            )
+            msg.attach_alternative(html_body, 'text/html')
+            msg.send()
             # print('link ======', link)
         return user
 
