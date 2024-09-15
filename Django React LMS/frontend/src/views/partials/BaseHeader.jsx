@@ -1,19 +1,7 @@
-import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-//import { CartContext } from "../plugin/Context";
-import { useAuthStore } from "../../store/auth";
+import React from "react";
+import { Link } from "react-router-dom";
 
 function BaseHeader() {
-//    const [cartCount, setCartCount] = useContext(CartContext);
-    const [searchQuery, setSearchQuery] = useState("");
-    const navigate = useNavigate();
-
-    const handleSearchSubmit = () => {
-        navigate(`/search/?search=${searchQuery}`);
-    };
-
-    const [isLoggedIn, user] = useAuthStore((state) => [state.isLoggedIn, state.user]);
-
     return (
         <div>
             <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
@@ -159,47 +147,26 @@ function BaseHeader() {
                                 </ul>
                             </li>
                         </ul>
-                        <div className="d-flex" role="search">
+                        <form className="d-flex" role="search">
                             <input
                                 className="form-control me-2 w-100"
                                 type="search"
                                 placeholder="Search Courses"
                                 aria-label="Search Courses"
-                                onChange={(e) => setSearchQuery(e.target.value)}
                             />
-                            <button
-                                onClick={handleSearchSubmit}
-                                className="btn btn-outline-success w-50"
-                                type="submit"
-                            >
+                            <button className="btn btn-outline-success w-50" type="submit">
                                 Search <i className="fas fa-search"></i>
                             </button>
-                        </div>
-                        {isLoggedIn() === true ? (
-                            <>
-                                <Link to="/logout/" className="btn btn-primary ms-2" type="submit">
-                                    Logout <i className="fas fa-usign-out-alt"></i>
-                                </Link>
-                            </>
-                        ) : (
-                            <>
-                                {/* Login and register button */}
-                                <Link to="/login/" className="btn btn-primary ms-2" type="submit">
-                                    Login <i className="fas fa-sign-in-alt"></i>
-                                </Link>
-                                <Link
-                                    to="/register/"
-                                    className="btn btn-primary ms-2"
-                                    type="submit"
-                                >
-                                    Register <i className="fas fa-user-plus"> </i>
-                                </Link>
-                            </>
-                        )}
-                        <Link className="btn btn-success ms-2" to="/cart/">
-                            Cart ({cartCount}) <i className="fas fa-shopping-cart"> </i>
+                        </form>
+                        <Link to="/login/" className="btn btn-primary ms-2" type="submit">
+                            Login <i className="fas fa-sign-in-alt"></i>
                         </Link>
-                        
+                        <Link to="/register/" className="btn btn-primary ms-2" type="submit">
+                            Register <i className="fas fa-user-plus"> </i>
+                        </Link>
+                        <Link className="btn btn-success ms-2" to="/cart/">
+                            Cart (3) <i className="fas fa-shopping-cart"> </i>
+                        </Link>
                     </div>
                 </div>
             </nav>
