@@ -60,3 +60,38 @@ python manage.py createsuperuser
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 </pre>
 
+FRONTEND
+
+1) yarn
+
+npm install --global yarn
+
+2) Criar um projeto React
+
+yarn create vite . --template react
+yarn
+yarn add axios
+
+3) Copy package.txt
+
+4) Install dependences
+
+yarn
+
+5) Run Server
+
+yarn dev
+
+http://localhost:5173
+
+6) Verificar:
+
+src\store\auth.js
+src\utils\auth.js
+src\utils\axios.js
+src\utils\constants.js
+src\utils\useAxios.js
+src\layouts\MainWrapper.js
+src\layouts\PrivateRoute.js
+
+

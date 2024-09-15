@@ -1,0 +1,11 @@
+MAILGUN_SECRET_KEY='secret_key'
+MAILGUN_API_KEY='api_key'
+MAILERSEND_API_TOKEN='token'
+MAILGUN_SENDER_DOMAIN='domain'
+FROM_EMAIL='e-mail'
+
+EMAIL_BACKEND = django.core.mail.backends.smtp.EmailBackend
+EMAIL_HOST = smtp.mailgun.org
+EMAIL_PORT = 465
+EMAIL_HOST_USER = gomide@sandboxce84a6b0bd0448cd8594c36a1f3f078f.mailgun.org
+EMAIL_HOST_PASSWORD = 1bb17fefe51bc9c5cecc8b4ae6147648-826eddfb-60e8d72a
